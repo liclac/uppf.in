@@ -1,0 +1,36 @@
+@import "../lib/bootstrap/less/bootstrap.less";
+
+.breadcrumb {
+	border-radius: 0;
+	background: none;
+	border-bottom: 1px solid #ccc;
+	padding: 0 15px;
+	
+	li {
+		&.active, a { padding: 5px; }
+		a { display: block; }
+	}
+}
+
+.nav.nav-arrows {
+	li {
+		a {
+			padding: 10px 0;
+			color: #777;
+			
+			&:before {
+				content: ">\0000a0";
+				opacity: 0;
+				color: #777;
+			}
+			
+			&:hover, &:focus, &:active {
+				background: none;
+				outline: none;
+				color: #333;
+				&:before { opacity: 1; }
+			}
+		}
+	}
+	
+}

@@ -1,0 +1,10 @@
+.DS_Store
+._*
+*.pyc
+*.sublime-project
+*.sublime-workspace
+
+static/gen
+static/.webassets-cache
+
+content/

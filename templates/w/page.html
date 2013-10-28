@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}{{ page.title or 'Index' }}{% endblock %}
+{% block content %}
+	<ul class="breadcrumb">
+		{% if page.components %}
+		<li><a href="{{ url_for('w.page') }}">Index</a></li>
+		{% endif %}
+		{%- for component in page.components[:-1] %}
+		<li><a>{{ component }}</a></li>
+		{%- endfor %}
+		<li class="active">{{ page.components[-1] or 'Index' }}</li>
+	</ul>
+	
+	<h1>{{ page.title or 'Index' }}</h1>
+	{{ page.html|safe }}
+	
+	{% if page.subpages -%}
+	<hr />
+	<ul class="nav nav-arrows nav-stacked">
+		{% for subpage in page.subpages -%}
+		<li><a href="{{ url_for('w.page', path=subpage.path) }}">{{ subpage.title }}</a></li>
+		{% endfor -%}
+	</ul>
+	{% endif -%}
+{% endblock %}

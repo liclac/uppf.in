@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block _title %}{% block title %}UNTITLED{% endblock %} | uppf.in{% endblock %}</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=false" />
+	{%- assets "css_all" %}
+		<link rel="stylesheet" href="{{ ASSET_URL }}" />
+	{%- endassets %}
+	{%- block after_head %}{% endblock %}
+</head>
+<body>
+	{%- block _content %}{% block content %}{% endblock %}{% endblock %}
+	{%- assets "js_all" %}
+		<script src="{{ ASSET_URL }}"></script>
+	{%- endassets %}
+	{%- block after_js %}{% endblock %}
+</body>
+</html>
