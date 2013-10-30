@@ -52,7 +52,7 @@ class Page(object):
 	def load_subpages(self):
 		self.subpages = [
 			Subpage(self.path, item) for item in os.listdir(self.realpath)
-			if item != '_Index.md'
+			if item != '_Index.md' and not item.startswith('.')
 		]
 
 
