@@ -6,9 +6,9 @@
 		<li><a href="{{ url_for('w.page') }}">Index</a></li>
 		{% endif %}
 		{%- for component in page.components[:-1] %}
-		<li><a>{{ component }}</a></li>
+		<li><a href="{{ url_for('w.page', path=component.path) }}">{{ component.title }}</a></li>
 		{%- endfor %}
-		<li class="active">{{ page.components[-1] or 'Index' }}</li>
+		<li class="active">{{ page.components[-1].title if page.components else 'Index' }}</li>
 	</ul>
 	
 	<h1>{{ page.title or 'Index' }}</h1>

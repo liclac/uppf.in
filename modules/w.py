@@ -14,13 +14,25 @@ class Subpage(object):
 		self.components = os.path.split(self.path)
 		self.title = self.components[-1].replace('_', ' ')
 
+class Component(object):
+	def __init__(self, last_component, new_part):
+		self.path = os.path.join(last_component.path if last_component else '', new_part)
+		self.title = new_part
+
 class Page(object):
 	subpages = []
 	
 	def __init__(self, path):
 		self.path = path
-		self.components = [c for c in self.path.split(os.path.sep) if c]
-		self.title = self.components[-1].replace('_', ' ') if self.components else 'Index'
+		
+		self.components = []
+		last_component = None
+		for comp in self.path.split(os.path.sep):
+			if comp:
+				last_component = Component(last_component, comp.replace('_', ' '))
+				self.components.append(last_component)
+		
+		self.title = last_component.title if last_component else 'Index'
 		self.realpath = os.path.abspath(path_for('w', path))
 		
 		if os.path.isdir(self.realpath):
