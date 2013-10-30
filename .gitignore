@@ -7,4 +7,5 @@
 static/gen
 static/.webassets-cache
 
+config.py
 content/
