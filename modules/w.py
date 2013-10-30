@@ -17,7 +17,7 @@ class Subpage(object):
 class Component(object):
 	def __init__(self, last_component, new_part):
 		self.path = os.path.join(last_component.path if last_component else '', new_part)
-		self.title = new_part
+		self.title = new_part.replace('_', ' ')
 
 class Page(object):
 	subpages = []
@@ -29,7 +29,7 @@ class Page(object):
 		last_component = None
 		for comp in self.path.split(os.path.sep):
 			if comp:
-				last_component = Component(last_component, comp.replace('_', ' '))
+				last_component = Component(last_component, comp)
 				self.components.append(last_component)
 		
 		self.title = last_component.title if last_component else 'Index'
